@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/axiosinstance.ts","./src/main.tsx","./src/routes.tsx","./src/vite-env.d.ts","./src/pages/imageuploadmodal.tsx","./src/pages/individualimage.tsx","./src/pages/loader.tsx","./src/pages/login.tsx","./src/pages/navbar.tsx","./src/pages/otp.tsx","./src/pages/pagenotfound.tsx","./src/pages/registration.tsx","./src/utils/cloudinary.ts"],"version":"5.6.2"}
