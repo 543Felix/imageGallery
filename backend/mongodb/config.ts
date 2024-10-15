@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import {connectionString} from '../envVariables/envVariables'
 
 function connectDb(){
+    console.log('connectionString = ',connectionString)
     if(connectionString){
         mongoose.connect(connectionString)
         .then(()=>{

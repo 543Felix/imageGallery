@@ -38,6 +38,13 @@ const ImageUploadModal = ({ closeModal,userId,setUpdatedImages }:Props) => {
         toast.warning('browse images to uppload to the gallary')
         return;
       }
+      const nonImageFiles = images.filter((file) => !file.image.type.startsWith('image/'));
+
+  if (nonImageFiles.length > 0) {
+    toast.warning('Some files are not valid images! Please upload only images.');
+    return;
+  }
+
       try {
         setLoading(true)
        const updatedImages = await  uploadMultipleImagesToCloudinary(images)
@@ -45,7 +52,7 @@ const ImageUploadModal = ({ closeModal,userId,setUpdatedImages }:Props) => {
        AxiosInstance.post('/user/uploadImage',{images:updatedImages,_id:userId})
        .then((res)=>{
         if(res.data.images){
-          console.log('res = ',res.data)
+          toast.success('Image success fully added')
           setUpdatedImages(res.data.images)
           closeModal(false)
         }

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const envVariables_1 = require("../envVariables/envVariables");
 function connectDb() {
+    console.log('connectionString = ', envVariables_1.connectionString);
     if (envVariables_1.connectionString) {
         mongoose_1.default.connect(envVariables_1.connectionString)
             .then(() => {

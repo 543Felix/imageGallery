@@ -140,7 +140,6 @@ const addImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 const getImages = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.query;
-        console.log('id= ', id);
         const images = yield galarySchema_1.default.findOne({ userId: new mongodb_1.ObjectId(id) });
         if (images) {
             res.status(200).json({ images: images.images });

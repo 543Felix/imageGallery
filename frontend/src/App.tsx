@@ -88,6 +88,7 @@ function App() {
       `/user/swapImages?draggedIndex=${draggedIndex}&dropIndex=${dropIndex}&userId=${userData.id}`
     )
       .then(() => {
+        
         setImages(newImages);
       })
       .catch((err) => {
