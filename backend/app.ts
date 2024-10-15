@@ -8,7 +8,6 @@ import cookieParser from 'cookie-parser'
 import path from 'path'
 
 
-const port = 3001
 const app = express()
 
 const currentWorkingDir = path.resolve();
@@ -45,6 +44,6 @@ app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.get("*", (req, res) => 
   res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"))
 );
-app.listen(port,()=>{ 
-    console.log(`connected to http://localhost:${port}/`)
+app.listen(process.env.PORT,()=>{ 
+    console.log(`connected to http://localhost:${process.env.PORT}/`)
 })

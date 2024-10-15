@@ -4,11 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const envVariables_1 = require("../envVariables/envVariables");
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+// import {connectionString} from '../envVariables/envVariables'
 function connectDb() {
-    console.log('connectionString = ', envVariables_1.connectionString);
-    if (envVariables_1.connectionString) {
-        mongoose_1.default.connect(envVariables_1.connectionString)
+    const connectionString = process.env.Mongoosse_Conection_String;
+    console.log('connectionString = ', connectionString);
+    if (connectionString) {
+        mongoose_1.default.connect(connectionString)
             .then(() => {
             console.log('successfully connected to mongodb');
         }).catch(() => {

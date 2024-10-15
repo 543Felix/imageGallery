@@ -1,7 +1,9 @@
 import mongoose from 'mongoose'
-import {connectionString} from '../envVariables/envVariables'
+import dotenv from 'dotenv'
+dotenv.config()
 
 function connectDb(){
+    const connectionString = process.env.Mongoosse_Conection_String as string
     console.log('connectionString = ',connectionString)
     if(connectionString){
         mongoose.connect(connectionString)
