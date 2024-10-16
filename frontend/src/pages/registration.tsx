@@ -53,7 +53,6 @@ const Register = ()=>{
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
         const phoneRegex = /^\d{10}$/
         const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+={}\[\]:;"'<>,.?/~`-]{5,10}$/
-        setLoading(true)
        if(formData.name.trim().length===0){
          toast.warning('Name is required')
          return
@@ -73,15 +72,18 @@ const Register = ()=>{
         toast.warning('Phone number should contain exactly 10 digits with only numbers')
         return
        }else if(formData.password.trim().length===0){
+        setLoading(false)
         toast.warning('Password is required')
         return
        }else if(!passwordRegex.test(formData.password.trim())){
+        setLoading(false)
         toast.warning('Create a strong password with minimum 5 digits')
         return
        }else if(formData.password!==formData.confirmPassword){
         toast.warning('Password didn\'t match')
         return
        }else{
+        setLoading(true)
         AxiosInstance.post('/user/register',formData)
         .then((res)=>{
           if(res.data.message){
